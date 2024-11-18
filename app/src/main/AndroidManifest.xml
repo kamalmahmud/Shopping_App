@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Shopping_App"
         tools:targetApi="31">
         <activity
+            android:name=".MainScreenAdapter"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
