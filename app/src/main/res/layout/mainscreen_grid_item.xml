@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="170dp"
+    android:layout_height="230dp"
+    android:orientation="vertical">
+    <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+        android:layout_weight="1"
+    android:src="@drawable/tshirt"
+    />
+    <TextView
+        android:id="@+id/txtitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item name"
+        android:textSize="22dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/txtitemprice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="--$"
+        android:textSize="15dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"/>
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="-225dp"
+        android:layout_marginLeft="130dp"
+
+        android:background="@drawable/favorite_icon_selector"/>
+
+
+</LinearLayout>
