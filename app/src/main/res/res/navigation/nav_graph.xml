@@ -1,0 +1,27 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/productFragment">
+
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.app.ProductFragment"
+        android:label="Product Page">
+        <action
+            android:id="@+id/action_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.app.CartFragment"
+        android:label="Cart Page">
+        <action
+            android:id="@+id/action_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.app.CheckoutFragment"
+        android:label="Checkout Page" />
+</navigation>

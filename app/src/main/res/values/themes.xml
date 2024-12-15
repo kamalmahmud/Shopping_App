@@ -43,4 +43,10 @@
     </style>
 
     <style name="Theme.Shopping_App" parent="Base.Theme.Shopping_App" />
+    <style name="Theme.Shopping_App.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Shopping_App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Shopping_App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
