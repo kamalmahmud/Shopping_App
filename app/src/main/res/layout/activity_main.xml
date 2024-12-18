@@ -1,66 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:padding="16dp"-->
+<!--    android:id="@+id/main">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/signInTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sign In"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginTop="32dp"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etEmail"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:hint="Email Address"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:minHeight="48dp" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/etPassword"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:hint="Password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:minHeight="48dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvForgotPassword"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:padding="8dp"-->
+<!--        android:text="Forgot Password? Reset" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnContinue"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:text="Continue"-->
+<!--        />-->
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvCreateAccount"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:padding="8dp"-->
+<!--        android:text="Don't have an Account? Create One" />-->
+
+
+
+
+
+<!--</LinearLayout>-->
+
+<androidx.fragment.app.FragmentContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_host_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:id="@+id/main">
-
-    <TextView
-        android:id="@+id/signInTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"/>
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
-
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="8dp"
-        android:text="Forgot Password? Reset" />
-
-    <Button
-        android:id="@+id/btnContinue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Continue"
-        />
-
-
-
-    <TextView
-        android:id="@+id/tvCreateAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="8dp"
-        android:text="Don't have an Account? Create One" />
-
-
-
-
-
-</LinearLayout>
+    app:navGraph="@navigation/nav_graph"
+    app:defaultNavHost="true" />
