@@ -18,6 +18,12 @@
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.Shopping_App.NoActionBar" />
         <activity
+            android:name=".MainScreenAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainScreen">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:id="@+id/search_bar_box"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/custom_search"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/searchicon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:src="@drawable/searchicon"
+            />
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:hint="Search" />
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Catagories" />
+
+        <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imagecatagory1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/custom_catagory"
+                        android:src="@drawable/hoodie" />
+
+                    <TextView
+                        android:id="@+id/txtcatagory1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:text="Hoodie" />
+
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imagecatagory2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/custom_catagory"
+                    android:src="@drawable/jeans" />
+
+                <TextView
+                    android:id="@+id/txtcatagory2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:text="Jeans" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imagecatagory3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/custom_catagory"
+                    android:src="@drawable/shirt" />
+
+                <TextView
+                    android:id="@+id/txtcatagory3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:text="Shirts" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imagecatagory4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/custom_catagory"
+                    android:src="@drawable/shooes" />
+
+                <TextView
+                    android:id="@+id/txtcatagory4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:text="Shirts" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imagecatagory5"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/custom_catagory"
+                    android:src="@drawable/tshirt" />
+
+                <TextView
+                    android:id="@+id/txtcatagory5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:text="T-Shirts" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imagecatagory6"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/custom_catagory"
+                    android:src="@drawable/bags" />
+
+                <TextView
+                    android:id="@+id/txtcatagory6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+
+                    android:text="Bags" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>
