@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title=""
+        android:id="@+id/Home_tab"
+        android:icon="@drawable/home_icon_selector" />
+    <item
+        android:id="@+id/Cart_tab"
+        android:icon="@drawable/cart_icon_selector"
+        android:title="" />
+    <item android:title=""
+        android:id="@+id/Favorite_tab"
+        android:icon="@drawable/favorite_icon_selector"
+        />
+    <item android:title=""
+        android:id="@+id/Profile_tab"
+        android:icon="@drawable/user_icon_selector"/>
+</menu>

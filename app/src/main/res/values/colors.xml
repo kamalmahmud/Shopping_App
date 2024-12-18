@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary brand colors -->
+    <color name="purple_500">#6C63FF</color>    <!-- Color for the Continue button -->
+    <color name="purple_700">#5549FF</color>    <!-- Darker variant -->
+    <color name="purple_200">#8B85FF</color>    <!-- Lighter variant -->
+
+    <!-- Neutral colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_100">#F5F5F5</color>      <!-- Background color -->
+    <color name="gray_300">#E0E0E0</color>      <!-- Input field background -->
+    <color name="gray_500">#9E9E9E</color>      <!-- Hint text color -->
+    <color name="gray_700">#616161</color>      <!-- Primary text color -->
+
+
+
 </resources>

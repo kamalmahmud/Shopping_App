@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cart_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </ListView>
+
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SubTotal"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/order_subtotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$$"
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:paddingRight="15dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shipping Cost"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/order_shipping"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$$"
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:paddingRight="15dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:text="Tax"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/order_tax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$$"
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:paddingRight="15dp"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/order_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$$"
+                    android:gravity="right"
+                    android:textSize="25dp"
+                    android:paddingRight="15dp"/>
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/confirmbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Confirm"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>
