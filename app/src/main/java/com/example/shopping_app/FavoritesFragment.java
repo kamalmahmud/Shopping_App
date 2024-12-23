@@ -51,10 +51,10 @@ public class FavoritesFragment extends Fragment {
 
         // Populate your favorite items list (In a real app, fetch from database or API)
         // Just an example
-        favoriteItems.add(new FavoriteItem("Nike Fuel Pack", "$32.00", R.drawable.ic_placeholder_item));
-        favoriteItems.add(new FavoriteItem("Nike Show X Rush", "$204", R.drawable.ic_placeholder_item));
-        favoriteItems.add(new FavoriteItem("Men's T-Shirt", "$45.00", R.drawable.ic_placeholder_item));
-        favoriteItems.add(new FavoriteItem("Men's Skate T-Shirt", "$45.00", R.drawable.ic_placeholder_item));
+        favoriteItems.add(new FavoriteItem("Nike Fuel Pack", "$32.00", R.drawable.user_icon_background));
+        favoriteItems.add(new FavoriteItem("Nike Show X Rush", "$204", R.drawable.user_icon_background));
+        favoriteItems.add(new FavoriteItem("Men's T-Shirt", "$45.00", R.drawable.user_icon_background));
+        favoriteItems.add(new FavoriteItem("Men's Skate T-Shirt", "$45.00", R.drawable.user_icon_background));
 
         // Update title with count
         String titleWithCount = getString(R.string.my_favourites) + " (" + favoriteItems.size() + ")";

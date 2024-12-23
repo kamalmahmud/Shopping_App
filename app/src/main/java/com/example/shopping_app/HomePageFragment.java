@@ -2,9 +2,18 @@ package com.example.shopping_app;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.GridView;
+
+import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
+import com.example.shopping_app.ViewModel.ItemListViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +31,9 @@ public class HomePageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerView;
+    private homeScreenItemsAdapter adapter;
+    private ItemListViewModel itemListViewModel;
 
     /**
      * Use this factory method to create a new instance of
@@ -48,6 +60,9 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FragmentManager fragmentManager=getChildFragmentManager();
+        homescreenlist homescreenlistfragment=new homescreenlist();
+        fragmentManager.beginTransaction().replace(R.id.homeScreenlistframe, homescreenlist.class,null).commit();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -57,7 +72,7 @@ public class HomePageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
 }
