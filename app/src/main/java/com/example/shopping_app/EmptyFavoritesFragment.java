@@ -48,7 +48,7 @@ public class EmptyFavoritesFragment extends Fragment {
                     // Navigate to a fragment or activity where user can explore products
                     // For demo, we’ll navigate to the FavoritesFragment with items
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, new FavoritesFragment())
+                            .replace(R.id.emptyfavorite, new FavoritesFragment())
                             .addToBackStack(null)
                             .commit();
                 }

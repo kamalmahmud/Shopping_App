@@ -18,7 +18,7 @@
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.Shopping_App.NoActionBar" />
         <activity
-            android:name=".MainScreenAdapter"
+            android:name=".Adapter.MainScreenAdapter"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

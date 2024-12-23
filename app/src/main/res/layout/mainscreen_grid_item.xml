@@ -3,6 +3,7 @@
     android:layout_width="170dp"
     android:layout_height="230dp"
     android:orientation="vertical"
+    android:id="@+id/homegriditem"
     android:background="@drawable/item_border">
     <ImageView
     android:layout_width="match_parent"

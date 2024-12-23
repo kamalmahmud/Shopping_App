@@ -50,7 +50,7 @@ public class EmptyCartFragment extends Fragment {
                     // For demonstration, replace fragment with the cart-with-items fragment
                     // In a real app, you might navigate to categories or product listings
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, new CartFragment())
+                            .replace(R.id.cart_screen, new CartFragment())
                             .addToBackStack(null)
                             .commit();
                 }
