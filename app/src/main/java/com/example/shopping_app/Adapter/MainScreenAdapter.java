@@ -15,6 +15,7 @@ import com.example.shopping_app.CartFragment;
 import com.example.shopping_app.FavoritesFragment;
 import com.example.shopping_app.Fragment.HomePageFragment;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
+import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.ProductDetailActivity;
 import com.example.shopping_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -58,12 +59,11 @@ public class MainScreenAdapter extends AppCompatActivity implements RecycleViewO
         });
     }
 
+
+
+
     @Override
-    public void onItemClicked(int position) {
-        Intent intent=new Intent(MainScreenAdapter.this, ProductDetailActivity.class);
-        startActivity(intent);
+    public void onItemClicked(ItemListModel item) {
 
     }
-
-
 }

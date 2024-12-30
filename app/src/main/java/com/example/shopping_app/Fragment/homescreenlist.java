@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
+import com.example.shopping_app.ProductActivity;
 import com.example.shopping_app.ProductDetailActivity;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
@@ -32,7 +33,7 @@ import java.util.List;
  * Use the {@link homescreenlist#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class homescreenlist extends Fragment {
+public class homescreenlist extends Fragment implements RecycleViewOnClick{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,25 +88,37 @@ public class homescreenlist extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        adapter=new homeScreenItemsAdapter();
-            recyclerView.setAdapter(adapter);
 
 
         itemListViewModel.getItemListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
             @Override
             public void onChanged(List<ItemListModel> itemListModels) {
-                adapter.setItemListModels(itemListModels);
+                adapter=new homeScreenItemsAdapter(itemListModels, new RecycleViewOnClick() {
+                    @Override
+                    public void onItemClicked(ItemListModel item) {
+                        Intent intent = new Intent(getActivity(), ProductActivity.class);
+                        Log.d("Click Listener1","hhh");
+
+                        intent.putExtra("Item ID",item.getDocumentId());
+                        startActivity(intent);
+                    }
+                });
+                recyclerView.setAdapter(adapter);
+
                 adapter.notifyDataSetChanged();
 
 
 
             }
         });
+
         // Inflate the layout for this fragment
         return view;
     }
 
 
+    @Override
+    public void onItemClicked(ItemListModel item) {
 
-
+    }
 }
