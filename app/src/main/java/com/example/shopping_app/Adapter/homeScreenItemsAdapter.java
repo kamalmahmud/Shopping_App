@@ -26,9 +26,13 @@ import java.util.List;
 public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItemsAdapter.ItemListViewholder> {
     private List<ItemListModel> itemListModels;
     private RecycleViewOnClick recycleViewOnClick;
-    public void setItemListModels(List<ItemListModel> itemListModels) {
+
+    public homeScreenItemsAdapter(List<ItemListModel> itemListModels, RecycleViewOnClick recycleViewOnClick) {
         this.itemListModels = itemListModels;
+        this.recycleViewOnClick = recycleViewOnClick;
     }
+
+
     @NonNull
     @Override
     public ItemListViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,11 +44,8 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
 
     @Override
     public void onBindViewHolder(@NonNull ItemListViewholder holder, int position) {
-        ItemListModel model=itemListModels.get(position);
 
-        holder.name.setText(model.getName());
-        holder.price.setText(model.getPrice());
-        holder.img.setImageBitmap(model.getImg());
+        holder.bind(itemListModels.get(position),recycleViewOnClick);
 
 
 
@@ -63,19 +64,34 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
         TextView price;
         ImageView img;
 
-        public ItemListViewholder(@NonNull View itemView) {
+        public  ItemListViewholder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.txtitem);
             price=itemView.findViewById(R.id.txtitemprice);
             img=itemView.findViewById(R.id.ItemImg_home);
 
+
+
+        }
+        public void bind(ItemListModel item,RecycleViewOnClick listener){
+            Log.d("dfdfdf","dff");
+            name.setText(item.getName());
+            price.setText(item.getPrice());
+
+            img.setImageBitmap(item.getImg());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    recycleViewOnClick.onItemClicked(getAdapterPosition());
+                    try{
+                    listener.onItemClicked(item);
+                    }catch (Exception e){
+                        Log.e("clickExc",e.getMessage());
+                    }
+
+
                 }
             });
-
         }
+
     }
 }
