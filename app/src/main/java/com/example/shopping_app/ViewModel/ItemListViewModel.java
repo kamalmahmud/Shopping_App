@@ -12,19 +12,29 @@ import com.example.shopping_app.Repository.ItemLsitRepository;
 
 import java.util.List;
 
-public class ItemListViewModel extends ViewModel implements ItemLsitRepository.onFireStoreTaskComplete {
-    private MutableLiveData<List<ItemListModel>> ItemListLiveData=new MutableLiveData<>();
+public class  ItemListViewModel extends ViewModel implements ItemLsitRepository.onFireStoreTaskComplete {
+    private static MutableLiveData<List<ItemListModel>> ItemListLiveData=new MutableLiveData<>();
     private ItemLsitRepository repository = new ItemLsitRepository(this);
 
-    public MutableLiveData<List<ItemListModel>> getItemListLiveData(){
+    public static MutableLiveData<List<ItemListModel>> getItemListLiveData(){
+
         return ItemListLiveData;
     }
     public ItemListViewModel(){
-        repository.getItemsData();
+        try {
+
+            if (ItemListLiveData.getValue() == null) {
+                Log.d("Data Fetch", "");
+                repository.getItemsData();
+            }
+        }catch (Exception e){
+            Log.e("Data Fetching in View Model",e.getMessage());
+        }
     }
 
     @Override
     public void itemdataloaded(List<ItemListModel> itemListModelList) {
+
     ItemListLiveData.setValue(itemListModelList);
     }
 

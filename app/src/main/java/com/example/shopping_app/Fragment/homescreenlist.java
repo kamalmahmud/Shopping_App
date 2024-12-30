@@ -1,9 +1,8 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Fragment;
 
-
-import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,9 +16,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
+import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
+import com.example.shopping_app.ProductDetailActivity;
+import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
 
 import java.util.List;
@@ -46,14 +49,7 @@ public class homescreenlist extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     *
-     * @return A new instance of fragment homescreenlist.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static homescreenlist newInstance(int columnCount) {
         homescreenlist fragment = new homescreenlist();
         Bundle args = new Bundle();
@@ -65,6 +61,14 @@ public class homescreenlist extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
         itemListViewModel = new ViewModelProvider(this , ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(ItemListViewModel.class);
         if (getArguments() != null) {
@@ -72,45 +76,36 @@ public class homescreenlist extends Fragment {
 
 
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_homescreenlist, container, false);
         recyclerView= view.findViewById(R.id.homescreenitemlist);
 
-            Context context = view.getContext();
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            adapter=new homeScreenItemsAdapter();
-//            recyclerView.setAdapter(adapter);
-            if (recyclerView != null) {
-                Log.e("Truefff","true");
-                recyclerView.setAdapter(adapter);
-
-            } else {
-                Log.e("RecyclerViewError", "RecyclerView is null");
-            }
-
-
-
-            itemListViewModel.getItemListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
-                @Override
-                public void onChanged(List<ItemListModel> itemListModels) {
-                    adapter.setItemListModels(itemListModels);
-                    adapter.notifyDataSetChanged();
-                    for (ItemListModel item : itemListModels) {
-                        Log.d("ItemListObserver", "Item ID: " + item.getName() + ", Item Name: " + item.getName());
-                    }
-
-                }
-            });
-
-            // Inflate the layout for this fragment
-            return view;
+        Context context = view.getContext();
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        adapter=new homeScreenItemsAdapter();
+            recyclerView.setAdapter(adapter);
+
+
+        itemListViewModel.getItemListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
+            @Override
+            public void onChanged(List<ItemListModel> itemListModels) {
+                adapter.setItemListModels(itemListModels);
+                adapter.notifyDataSetChanged();
+
+
+
+            }
+        });
+        // Inflate the layout for this fragment
+        return view;
+    }
+
+
+
+
 }
