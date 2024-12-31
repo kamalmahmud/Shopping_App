@@ -1,8 +1,6 @@
 package com.example.shopping_app.Adapter;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
@@ -11,12 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.shopping_app.CartFragment;
-import com.example.shopping_app.FavoritesFragment;
+import com.example.shopping_app.Fragment.CartFragment;
+import com.example.shopping_app.Fragment.FavoritesFragment;
 import com.example.shopping_app.Fragment.HomePageFragment;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
-import com.example.shopping_app.ProductDetailActivity;
 import com.example.shopping_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

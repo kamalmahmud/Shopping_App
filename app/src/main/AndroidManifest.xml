@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Shopping_App"
         tools:targetApi="31" >
         <activity
-            android:name=".ProductActivity"
+            android:name=".Activities.ProductActivity"
             android:exported="false"
             android:label="@string/title_activity_product"
             android:theme="@style/Theme.Shopping_App.NoActionBar" />
@@ -24,10 +24,10 @@
             android:name=".Adapter.MainScreenAdapter"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

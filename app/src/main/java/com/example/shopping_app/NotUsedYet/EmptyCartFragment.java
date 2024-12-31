@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.NotUsedYet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.shopping_app.Fragment.CartFragment;
+import com.example.shopping_app.R;
 import com.google.android.material.button.MaterialButton;
 
-public class EmptyFavoritesFragment extends Fragment {
+public class EmptyCartFragment extends Fragment {
 
-    public EmptyFavoritesFragment() {
+    public EmptyCartFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,7 @@ public class EmptyFavoritesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_empty_favorites, container, false);
+        return inflater.inflate(R.layout.fragment_empty_cart, container, false);
     }
 
     @Override
@@ -32,12 +34,14 @@ public class EmptyFavoritesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ImageButton backButton = view.findViewById(R.id.btn_back);
-        MaterialButton exploreButton = view.findViewById(R.id.btn_explore_now);
+        MaterialButton exploreButton = view.findViewById(R.id.btn_explore_categories);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getActivity() != null) getActivity().onBackPressed();
+                if (getActivity() != null) {
+                    getActivity().onBackPressed();
+                }
             }
         });
 
@@ -45,10 +49,10 @@ public class EmptyFavoritesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (getActivity() != null) {
-                    // Navigate to a fragment or activity where user can explore products
-                    // For demo, we’ll navigate to the FavoritesFragment with items
+                    // For demonstration, replace fragment with the cart-with-items fragment
+                    // In a real app, you might navigate to categories or product listings
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.emptyfavorite, new FavoritesFragment())
+                            .replace(R.id.cart_screen, new CartFragment())
                             .addToBackStack(null)
                             .commit();
                 }

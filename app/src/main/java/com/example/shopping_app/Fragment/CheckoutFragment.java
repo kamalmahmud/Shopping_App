@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-public class ProductFragment extends Fragment {
+import com.example.shopping_app.R;
+
+public class CheckoutFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for the Product Page
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        // Inflate the layout for the Checkout Page
+        return inflater.inflate(R.layout.fragment_checkout, container, false);
     }
 }
-

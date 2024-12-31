@@ -16,13 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
-import com.example.shopping_app.ProductActivity;
-import com.example.shopping_app.ProductDetailActivity;
+import com.example.shopping_app.Activities.ProductActivity;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
 
