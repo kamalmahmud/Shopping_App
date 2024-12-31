@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="70px"
-    tools:context=".RegisterActivity">
+    tools:context=".Activities.RegisterActivity">
 
     <ImageButton
         android:id="@+id/imageButton"

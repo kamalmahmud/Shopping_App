@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shopping_app.NotUsedYet.FavoriteItem;
+import com.example.shopping_app.Adapter.FavoritesAdapter;
+import com.example.shopping_app.R;
 
 import java.util.ArrayList;
 import java.util.List;

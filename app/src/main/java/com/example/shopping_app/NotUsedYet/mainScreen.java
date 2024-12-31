@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.NotUsedYet;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -6,13 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.shopping_app.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link empty_cart_fragment#newInstance} factory method to
+ * Use the {@link mainScreen#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class empty_cart_fragment extends Fragment {
+public class mainScreen extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,11 +31,11 @@ public class empty_cart_fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment empty_cart_fragment.
+     * @return A new instance of fragment mainScreen.
      */
     // TODO: Rename and change types and number of parameters
-    public static empty_cart_fragment newInstance(String param1, String param2) {
-        empty_cart_fragment fragment = new empty_cart_fragment();
+    public static mainScreen newInstance(String param1, String param2) {
+        mainScreen fragment = new mainScreen();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -41,7 +43,7 @@ public class empty_cart_fragment extends Fragment {
         return fragment;
     }
 
-    public empty_cart_fragment() {
+    public mainScreen() {
         // Required empty public constructor
     }
 
@@ -58,6 +60,6 @@ public class empty_cart_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_empty_cart_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shopping_app.Adapter.MainScreenAdapter;
+import com.example.shopping_app.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override

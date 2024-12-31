@@ -1,24 +1,16 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Activities;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.shopping_app.Adapter.ImageSliderAdapter;
 import com.example.shopping_app.Model.ItemListModel;
+import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
-
-import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
     ViewPager2 vp;
@@ -45,6 +37,7 @@ public class ProductActivity extends AppCompatActivity {
             title.setText(item.getName());
             price.setText(item.getPrice());
             description.setText(item.getDescription());
+
         }catch (Exception e){
             Log.e("ProductDetails init",e.getMessage());
         }

@@ -1,4 +1,4 @@
-package com.example.shopping_app;
+package com.example.shopping_app.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shopping_app.NotUsedYet.FavoriteItem;
+import com.example.shopping_app.R;
 
 import java.util.List;
 
