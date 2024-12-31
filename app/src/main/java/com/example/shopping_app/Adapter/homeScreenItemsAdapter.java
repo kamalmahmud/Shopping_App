@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,14 +65,18 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
         TextView name;
         TextView price;
         ImageView img;
+        LinearLayout itemLauout;
+        Button FavoriteBtn;
+        View ClickablePart;
 
         public  ItemListViewholder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.txtitem);
-            price=itemView.findViewById(R.id.txtitemprice);
-            img=itemView.findViewById(R.id.ItemImg_home);
-
-
+            itemLauout=itemView.findViewById(R.id.homegriditem);
+            FavoriteBtn=itemLauout.findViewById(R.id.itemFavoriteBtn);
+            ClickablePart=itemLauout.findViewById(R.id.itemClickableview);
+            name= ClickablePart.findViewById(R.id.txtitem);
+            price=ClickablePart.findViewById(R.id.txtitemprice);
+            img=ClickablePart.findViewById(R.id.ItemImg_home);
 
         }
         public void bind(ItemListModel item,RecycleViewOnClick listener){
@@ -79,10 +85,12 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
             price.setText(item.getPrice());
 
             img.setImageBitmap(item.getImg());
-            itemView.setOnClickListener(new View.OnClickListener() {
+            ClickablePart.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     try{
+                        Log.d("ItemClicked","");
                     listener.onItemClicked(item);
                     }catch (Exception e){
                         Log.e("clickExc",e.getMessage());

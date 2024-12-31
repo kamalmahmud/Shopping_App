@@ -63,4 +63,9 @@ public class MainScreenAdapter extends AppCompatActivity implements RecycleViewO
     public void onItemClicked(ItemListModel item) {
 
     }
+
+    @Override
+    public void onAddFavoriteClicked() {
+
+    }
 }
