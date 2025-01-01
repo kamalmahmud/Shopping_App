@@ -53,5 +53,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("androidx.room:room-runtime:2.6.1")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("com.squareup.picasso:picasso:2.71828")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
 }
