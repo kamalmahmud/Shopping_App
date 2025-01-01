@@ -36,7 +36,7 @@ public class HomePageFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getActivity(),"OnCreate",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"OnCreate",Toast.LENGTH_SHORT).show();
 
 
 
@@ -45,7 +45,7 @@ public class HomePageFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Toast.makeText(getActivity(),"onCreateView",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"onCreateView",Toast.LENGTH_SHORT).show();
         FragmentManager fragmentManager=getChildFragmentManager();
 
 

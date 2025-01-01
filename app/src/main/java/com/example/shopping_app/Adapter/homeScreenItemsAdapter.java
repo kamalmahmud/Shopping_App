@@ -14,10 +14,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
+import com.example.shopping_app.Utils.ImageLoader;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -80,12 +81,15 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
 
         }
         public void bind(ItemListModel item,RecycleViewOnClick listener){
-            Log.d("dfdfdf","dff");
+
             name.setText(item.getName());
             price.setText(item.getPrice());
 
-            img.setImageBitmap(item.getImg());
-            ClickablePart.setOnClickListener(new View.OnClickListener() {
+            ImageLoader.loadImage(
+                    item.getImage(),
+                    img
+            );
+            itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {

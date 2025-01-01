@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.bumptech.glide.Glide;
+
 import com.example.shopping_app.R;
 
 import java.io.BufferedInputStream;
