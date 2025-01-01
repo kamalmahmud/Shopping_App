@@ -100,6 +100,11 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick{
                         intent.putExtra("Item ID",item.getDocumentId());
                         startActivity(intent);
                     }
+
+                    @Override
+                    public void onAddFavoriteClicked() {
+
+                    }
                 });
                 recyclerView.setAdapter(adapter);
 
@@ -117,6 +122,11 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick{
 
     @Override
     public void onItemClicked(ItemListModel item) {
+
+    }
+
+    @Override
+    public void onAddFavoriteClicked() {
 
     }
 }
