@@ -17,7 +17,7 @@ import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainScreenAdapter extends AppCompatActivity implements RecycleViewOnClick {
+public class MainScreenAdapter extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +59,4 @@ public class MainScreenAdapter extends AppCompatActivity implements RecycleViewO
 
 
 
-    @Override
-    public void onItemClicked(ItemListModel item) {
-
-    }
-
-    @Override
-    public void onAddFavoriteClicked() {
-
-    }
 }

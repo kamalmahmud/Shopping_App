@@ -6,6 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.shopping_app.Model.ItemListModel;
+
 @Entity(tableName = "favorite_table")
 
 public class FavoriteEntity {
@@ -19,8 +21,10 @@ public class FavoriteEntity {
     public String name;
 
     @ColumnInfo(name = "product_price")
-    public float price;
+    public Float price;
 
     @ColumnInfo(name = "img")
     public Bitmap img;
+
+
 }

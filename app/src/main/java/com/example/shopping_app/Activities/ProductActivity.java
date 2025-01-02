@@ -54,7 +54,7 @@ public class ProductActivity extends AppCompatActivity {
             itemListViewModel=new ItemListViewModel();
             ItemListModel item = itemListViewModel.getItemById(getIntent().getStringExtra("Item ID"));
             title.setText(item.getName());
-            price.setText(item.getPrice());
+            price.setText(item.getPrice().toString());
             description.setText(item.getDescription());
             BackBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

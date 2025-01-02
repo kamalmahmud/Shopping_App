@@ -83,12 +83,13 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
         public void bind(ItemListModel item,RecycleViewOnClick listener){
 
             name.setText(item.getName());
-            price.setText(item.getPrice());
-
-            ImageLoader.loadImage(
-                    item.getImage(),
-                    img
-            );
+            price.setText(item.getPrice().toString());
+            Bitmap itemimg=item.getImg();
+            if(itemimg==null){
+            ImageLoader.loadImage(item.getImage(), img,item);
+            }else{
+                img.setImageBitmap(itemimg);
+            }
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -101,6 +102,12 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
                     }
 
 
+                }
+            });
+            FavoriteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAddFavoriteClicked(item);
                 }
             });
         }
