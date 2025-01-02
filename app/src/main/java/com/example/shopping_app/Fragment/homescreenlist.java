@@ -1,8 +1,10 @@
 package com.example.shopping_app.Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
@@ -23,6 +26,9 @@ import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.Activities.ProductActivity;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
+import com.example.shopping_app.db.AppDatabase;
+import com.example.shopping_app.db.dao.FavoriteDao;
+import com.example.shopping_app.db.entities.FavoriteEntity;
 
 import java.util.List;
 
@@ -101,9 +107,28 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick{
                         startActivity(intent);
                     }
 
+                    @SuppressLint("SuspiciousIndentation")
                     @Override
-                    public void onAddFavoriteClicked() {
+                    public void onAddFavoriteClicked(ItemListModel item) {
+                        try{
+                        AppDatabase db = AppDatabase.getInstance(context);
+                        FavoriteDao favoriteDao = db.favoriteDao();
+                        FavoriteEntity FavItem=new FavoriteEntity();
+                        FavItem.productId=item.getDocumentId();
+                        FavItem.name=item.getName();
+                        FavItem.img=item.getImg();
+                        FavItem.price= item.getPrice();
 
+                            new AsyncTask<Void, Void, Void>() {
+                                @Override
+                                protected Void doInBackground(Void... voids) {
+                                    favoriteDao.insert(FavItem);
+                                    return null;
+                                }
+                            }.execute();
+                    }catch (Exception e){
+                        Log.e("FavoriteClicked",e.getMessage());
+                        }
                     }
                 });
                 recyclerView.setAdapter(adapter);
@@ -126,7 +151,7 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick{
     }
 
     @Override
-    public void onAddFavoriteClicked() {
+    public void onAddFavoriteClicked(ItemListModel item) {
 
     }
 }

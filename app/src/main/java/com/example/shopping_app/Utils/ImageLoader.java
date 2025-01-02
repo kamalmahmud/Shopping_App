@@ -8,6 +8,7 @@ import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 
+import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
 
 import java.io.InputStream;
@@ -31,7 +32,7 @@ public class ImageLoader {
         };
     }
 
-    public static void loadImage(String imageUrl, ImageView imageView) {
+    public static void loadImage(String imageUrl, ImageView imageView, ItemListModel item) {
         if (imageUrl == null || imageView == null) return;
 
         Bitmap cachedBitmap = memoryCache.get(imageUrl);
@@ -48,8 +49,10 @@ public class ImageLoader {
                 in.close();
 
                 if (bitmap != null) {
+                    Log.d("ImageDownloaded","msg");
                     memoryCache.put(imageUrl, bitmap);
                     mainHandler.post(() -> imageView.setImageBitmap(bitmap));
+                    item.setImg(bitmap);
                 }
             } catch (Exception e) {
                 Log.e("ImageLoader", "Error loading image: " + imageUrl, e);

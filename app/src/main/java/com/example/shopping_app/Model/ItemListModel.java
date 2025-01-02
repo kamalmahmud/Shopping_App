@@ -13,9 +13,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class ItemListModel {
-    private String name,description,image,price;
+    private String name,description,image;
     private String DocumentId;
-    Bitmap img;
+    private Bitmap img;
+    private Float price;
 
     public Bitmap getImg() {
         return img;
@@ -87,11 +88,11 @@ public class ItemListModel {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -111,7 +112,7 @@ public class ItemListModel {
         this.description = description;
     }
 
-    public ItemListModel(String name, String description, String image, String price) {
+    public ItemListModel(String name, String description, String image, Float price) {
         this.name = name;
         this.description = description;
         this.image = image;
