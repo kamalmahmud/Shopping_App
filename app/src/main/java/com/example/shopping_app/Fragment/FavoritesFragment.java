@@ -1,10 +1,10 @@
 package com.example.shopping_app.Fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,14 +16,12 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shopping_app.NotUsedYet.FavoriteItem;
 import com.example.shopping_app.Adapter.FavoritesAdapter;
 import com.example.shopping_app.R;
 import com.example.shopping_app.db.AppDatabase;
 import com.example.shopping_app.db.dao.FavoriteDao;
 import com.example.shopping_app.db.entities.FavoriteEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FavoritesFragment extends Fragment {
@@ -54,11 +52,11 @@ public class FavoritesFragment extends Fragment {
 
 
 
-        // Populate your favorite items list (In a real app, fetch from database or API)
-        // Just an example
+
 
         AppDatabase db=AppDatabase.getInstance(getContext());
         FavoriteDao favoriteDao=db.favoriteDao();
+
         favoriteItems=favoriteDao.getAllFavorites();
         // Update title with count
         favoriteItems.observe(getViewLifecycleOwner(), new Observer<List<FavoriteEntity>>() {
