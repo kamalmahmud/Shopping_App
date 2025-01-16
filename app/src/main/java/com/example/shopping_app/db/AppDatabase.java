@@ -12,12 +12,14 @@ import androidx.room.TypeConverters;
 
 import com.example.shopping_app.db.dao.CartDao;
 import com.example.shopping_app.db.dao.FavoriteDao;
+import com.example.shopping_app.db.dao.OrderDao;
 import com.example.shopping_app.db.entities.CartEntity;
 import com.example.shopping_app.db.entities.FavoriteEntity;
+import com.example.shopping_app.db.entities.OrderEntity;
 
 import java.io.ByteArrayOutputStream;
-//   ما كتب هاد الكود ai
-@Database(entities = {CartEntity.class, FavoriteEntity.class}, version = 1)
+
+@Database(entities = {CartEntity.class, FavoriteEntity.class, OrderEntity.class}, version = 2) // Changed version from 1 to 2
 @TypeConverters({AppDatabase.Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -25,6 +27,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract CartDao cartDao();
     public abstract FavoriteDao favoriteDao();
+    public abstract OrderDao OrderDao();  // Added OrderDao
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
@@ -32,7 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             "shopping_database")
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()  // This will delete the old database and create a new one
                     .build();
         }
         return instance;
@@ -55,10 +58,3 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     }
 }
-
-// this is how to call the appDataBase
-//         AppDatabase db = AppDatabase.getInstance(context);
-//        // Access Cart DAO
-//        CartDao cartDao = db.cartDao();
-//        // Access Favorite DAO
-//        FavoriteDao favoriteDao = db.favoriteDao();
