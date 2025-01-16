@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cart_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:padding="16dp">
-
 
 
     <!-- Screen Title -->
@@ -14,35 +13,37 @@
         android:id="@+id/tv_cart_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/cart"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <!-- Remove All Button -->
     <TextView
         android:id="@+id/tv_remove_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="@string/remove_all"
-        android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="?attr/colorOnBackground"
+        android:textAppearance="?attr/textAppearanceBody2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@id/tv_cart_title"
-        app:layout_constraintEnd_toEndOf="parent" />
+        />
 
     <!-- Product List (RecyclerView) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cart_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_title"
         app:layout_constraintBottom_toTopOf="@+id/layout_price_summary"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cart_title" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"/>
 
     <!-- Price Summary Layout -->
     <LinearLayout
@@ -50,9 +51,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_coupon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,16 +64,16 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/subtotal"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:layout_weight="1"
+                android:textAppearance="?attr/textAppearanceBody2"/>
 
             <TextView
                 android:id="@+id/tv_subtotal_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$200"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:textAppearance="?attr/textAppearanceBody2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -84,16 +85,16 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/shipping_cost"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:layout_weight="1"
+                android:textAppearance="?attr/textAppearanceBody2"/>
 
             <TextView
                 android:id="@+id/tv_shipping_cost_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$8.00"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:textAppearance="?attr/textAppearanceBody2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,23 +106,23 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/tax"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:layout_weight="1"
+                android:textAppearance="?attr/textAppearanceBody2"/>
 
             <TextView
                 android:id="@+id/tv_tax_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$0.00"
-                android:textAppearance="?attr/textAppearanceBody2" />
+                android:textAppearance="?attr/textAppearanceBody2"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:alpha="0.2"
-            android:background="?attr/colorOnBackground" />
+            android:background="?attr/colorOnBackground"
+            android:alpha="0.4"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,10 +133,10 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/total"
                 android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_total_amount"
@@ -143,50 +144,21 @@
                 android:layout_height="wrap_content"
                 android:text="$208"
                 android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Coupon Entry Layout -->
-    <LinearLayout
-        android:id="@+id/layout_coupon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <EditText
-            android:id="@+id/et_coupon_code"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/editTextBackground"
-            android:hint="@string/enter_coupon_code"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:padding="8dp" />
-
-        <ImageButton
-            android:id="@+id/btn_apply_coupon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/apply_coupon"
-            android:src="@drawable/user_icon" />
-    </LinearLayout>
 
     <!-- Checkout Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_checkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/checkout"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,9 @@ public interface CartDao {
     @Query("SELECT * FROM cart_table")
     LiveData<List<CartEntity>> getAllCartItems();
 
+    @Query("SELECT COUNT(*) FROM cart_table")
+    LiveData<Integer> getCartCount();
+
     @Query("SELECT * FROM cart_table WHERE product_id = :productId")
     LiveData<CartEntity> getCartItemById(String productId);
 

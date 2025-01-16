@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -16,6 +17,9 @@ import com.example.shopping_app.Adapter.ImageSliderAdapter;
 import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
+import com.example.shopping_app.db.AppDatabase;
+import com.example.shopping_app.db.dao.CartDao;
+import com.example.shopping_app.db.entities.CartEntity;
 
 import java.util.ArrayList;
 
@@ -29,6 +33,7 @@ public class ProductActivity extends AppCompatActivity {
     Spinner color_spinner;
     Button increaseQuantityBtn;
     Button decreaseQuantityBtn;
+    Button addToCart;
 
 
     Integer Quantity =1;
@@ -42,13 +47,13 @@ public class ProductActivity extends AppCompatActivity {
         increaseQuantityBtn=(Button)findViewById(R.id.quantity_increase);
         decreaseQuantityBtn=(Button)findViewById(R.id.quantity_decrease);
         QuantityTxt=findViewById(R.id.quantity_text);
+        addToCart = (Button)findViewById(R.id.add_to_bag);
 
         vp = findViewById(R.id.image_slider);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
         description = findViewById(R.id.description);
-        size_spinner = findViewById(R.id.size_spinner);
-        color_spinner = findViewById(R.id.color_spinner);
+
 
 
             itemListViewModel=new ItemListViewModel();
@@ -91,6 +96,41 @@ public class ProductActivity extends AppCompatActivity {
                     QuantityTxt.setText(Quantity.toString());
                 }
             });
+
+            addToCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    CartEntity cartItem = new CartEntity();
+                    cartItem.setProductId(getIntent().getStringExtra("Item ID"));
+                    cartItem.setName(item.getName());
+                    cartItem.setPrice(item.getPrice());
+                    cartItem.setQuantity(Quantity);
+                    cartItem.setImgUrl(item.getImg());
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                CartDao cartDao = AppDatabase.getInstance(getApplicationContext()).cartDao();
+                                cartDao.insert(cartItem);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // Show success message to user
+                                        Toast.makeText(ProductActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } catch (Exception e) {
+                                Log.e("AddToCart", "Error adding item to cart: " + e.getMessage());
+                            }
+                        }
+                    }).start();
+
+                }
+            });
+
+
 //        }catch (Exception e ){
 //            Log.e("Quantitiy",e.getMessage());
 //        }
