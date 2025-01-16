@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.shopping_app.Activities.ProductActivity;
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
@@ -38,6 +41,7 @@ public class SearchScreenFragment extends Fragment {
     private String searchQuery;
     ItemListViewModel itemListViewModel;
     RecyclerView recyclerView;
+    EditText Searchbar;
     private homeScreenItemsAdapter adapter;
     Integer mColumnCount=2;
 
@@ -70,11 +74,14 @@ public class SearchScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("SearchFragment",searchQuery);
-        // Initialize ViewModel
+        View view = inflater.inflate(R.layout.fragment_search_screen, container, false);
 
+        Searchbar=view.findViewById(R.id.search_bar);
+        Searchbar.setText(searchQuery);
+
+        Log.d("SearchDebug", "SearchBar found2: " + (Searchbar != null));
 
         // Inflate layout
-        View view = inflater.inflate(R.layout.fragment_search_screen, container, false);
         SearchScreenList searchListFragment = SearchScreenList.newInstance(searchQuery);
 
         FragmentManager fragmentManager = getChildFragmentManager();
@@ -84,8 +91,48 @@ public class SearchScreenFragment extends Fragment {
                 .commit();
 
 
+        setupSearchListener();
+        return view;
+    }
+    private void setupSearchListener() {
+        Log.d("SearchDebug", "Enter key detectedq");
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_screen, container, false);
+        Searchbar.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                Log.d("SearchDebug", "Enter key detected");
+                performSearch();
+                return true;
+            }
+            return false;
+        });
+
+        // Approach 2: KeyListener
+        Searchbar.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_DOWN &&
+                    keyCode == KeyEvent.KEYCODE_ENTER) {
+                performSearch();
+                return true;
+            }
+            return false;
+        });
+    }
+    private void performSearch() {
+        String searchQuery = Searchbar.getText().toString().trim();
+
+        if (!searchQuery.isEmpty()) {
+            try {
+                SearchScreenList searchListFragment = SearchScreenList.newInstance(searchQuery);
+
+                FragmentManager fragmentManager = getChildFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.searchItemList, searchListFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+            } catch (Exception e) {
+                Log.e("SearchDebug", "Error during search: ", e);
+            }
+        }
     }
 }
