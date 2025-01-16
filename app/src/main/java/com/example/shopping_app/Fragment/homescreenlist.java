@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -35,19 +36,21 @@ import java.util.List;
 
 public class homescreenlist extends Fragment implements RecycleViewOnClick {
     private int mColumnCount = 2;
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_SEARCH_QUERY = "search_query";
+    private String searchQuery;
     private RecyclerView recyclerView;
     private homeScreenItemsAdapter adapter;
     private ItemListViewModel itemListViewModel;
+    MutableLiveData<List<ItemListModel>> LiveData;
 
     public homescreenlist() {
         // Required empty public constructor
     }
 
-    public static homescreenlist newInstance(int columnCount) {
+    public static homescreenlist newInstance(String category) {
         homescreenlist fragment = new homescreenlist();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putString(ARG_SEARCH_QUERY, category);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +59,7 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            searchQuery = getArguments().getString(ARG_SEARCH_QUERY);
         }
     }
 
@@ -80,9 +83,14 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        if(searchQuery!=null){
+            LiveData=itemListViewModel.getItemListDataByCategory(searchQuery);
+        }else{
+            LiveData=itemListViewModel.getItemListLiveData();
+        }
 
         // Observe ItemList data
-        itemListViewModel.getItemListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
+        LiveData.observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
             @Override
             public void onChanged(List<ItemListModel> itemListModels) {
                 adapter = new homeScreenItemsAdapter(itemListModels, new RecycleViewOnClick() {

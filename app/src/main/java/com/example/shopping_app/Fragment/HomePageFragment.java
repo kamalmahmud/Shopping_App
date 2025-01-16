@@ -29,6 +29,7 @@ public class HomePageFragment extends Fragment  {
     private homeScreenItemsAdapter adapter;
     private ItemListViewModel itemListViewModel;
     EditText SearchBar;
+    View CategoryHoodie,CategoryJeans,CategoryShirt,CategoryShoes,CategoryTshirt,CategoryBag;
 
 
 
@@ -109,6 +110,7 @@ public class HomePageFragment extends Fragment  {
 
         // Setup listener with both approaches for testing
         setupSearchListener();
+        CategoryListeners(view);
 
         // ListFragment setup
         FragmentManager fragmentManager = getChildFragmentManager();
@@ -168,7 +170,34 @@ public class HomePageFragment extends Fragment  {
             }
         }
     }
+    private void CategoryListeners(View view){
+        CategoryHoodie=view.findViewById(R.id.hoodiecatagory);
+        CategoryBag=view.findViewById(R.id.bagcatagory);
+        CategoryJeans=view.findViewById(R.id.jeanscatagory);
+        CategoryShirt=view.findViewById(R.id.shirtscatagory);
+        CategoryShoes=view.findViewById(R.id.shoescatagory);
+        CategoryTshirt=view.findViewById(R.id.tshirtcatagory);
+
+
+        CategoryShoes.setOnClickListener(v -> handleListCategory("shoes"));
+        CategoryShirt.setOnClickListener(v -> handleListCategory("shirt"));
+        CategoryJeans.setOnClickListener(v -> handleListCategory("jean"));
+        CategoryBag.setOnClickListener(v -> handleListCategory("bag"));
+        CategoryHoodie.setOnClickListener(v -> handleListCategory("hoodie"));
+        CategoryTshirt.setOnClickListener(v -> handleListCategory("tshirt"));
+
     }
+    private void handleListCategory(String category){
+        FragmentManager fragmentManager = getChildFragmentManager();
+        homescreenlist categorlist= new homescreenlist().newInstance(category);
+        fragmentManager.beginTransaction()
+                .replace(R.id.homeScreenlistframe, categorlist)
+                .addToBackStack(null)
+                .commit();
+    }
+    }
+
+
 
 
 
