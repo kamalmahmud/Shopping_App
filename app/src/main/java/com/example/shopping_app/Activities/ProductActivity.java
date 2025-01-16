@@ -29,8 +29,6 @@ public class ProductActivity extends AppCompatActivity {
     ImageButton BackBtn;
     TextView price;
     TextView description;
-    Spinner size_spinner;
-    Spinner color_spinner;
     Button increaseQuantityBtn;
     Button decreaseQuantityBtn;
     Button addToCart;

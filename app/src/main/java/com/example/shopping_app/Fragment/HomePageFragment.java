@@ -48,11 +48,7 @@ public class HomePageFragment extends Fragment  {
 //        Toast.makeText(getActivity(),"onCreateView",Toast.LENGTH_SHORT).show();
         FragmentManager fragmentManager=getChildFragmentManager();
 
-
-            fragmentManager.beginTransaction().replace(R.id.homeScreenlistframe, homescreenlist.class,null).addToBackStack(null).commit();
-
-
-
+        fragmentManager.beginTransaction().replace(R.id.homeScreenlistframe, homescreenlist.class,null).addToBackStack(null).commit();
 
         return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
