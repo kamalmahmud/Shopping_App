@@ -33,4 +33,9 @@ public interface FavoriteDao {
 
     @Query("SELECT COUNT(*) FROM favorite_table")
     LiveData<Integer> getFavoriteCount();
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite_table WHERE product_id = :productId)")
+    boolean isFavoriteSync(String productId);
+
+    @Query("SELECT * FROM favorite_table WHERE product_id = :productId LIMIT 1")
+    FavoriteEntity getFavoriteByIdSync(String productId);
 }

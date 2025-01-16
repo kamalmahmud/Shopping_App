@@ -1,7 +1,7 @@
 package com.example.shopping_app.Adapter;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,18 +12,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.shopping_app.FavoriteImplementation;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
 import com.example.shopping_app.Utils.ImageLoader;
+import com.example.shopping_app.db.AppDatabase;
+import com.example.shopping_app.db.dao.FavoriteDao;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
 
 public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItemsAdapter.ItemListViewholder> {
@@ -84,6 +84,8 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
 
             name.setText(item.getName());
             price.setText(item.getPrice().toString());
+            FavoriteImplementation.FavoriteIconHandler(FavoriteBtn,itemLauout,item);
+
             Bitmap itemimg=item.getImg();
             if(itemimg==null){
             ImageLoader.loadImage(item.getImage(), img,item);
@@ -100,14 +102,14 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
                     }catch (Exception e){
                         Log.e("clickExc",e.getMessage());
                     }
-
-
                 }
             });
             FavoriteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onAddFavoriteClicked(item);
+                    listener.onAddFavoriteClicked(item,FavoriteBtn);
+                    Log.d("FacoriteClickedB","");
+
                 }
             });
         }

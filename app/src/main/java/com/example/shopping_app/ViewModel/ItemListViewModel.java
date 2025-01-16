@@ -2,8 +2,10 @@ package com.example.shopping_app.ViewModel;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -13,6 +15,7 @@ import com.example.shopping_app.Repository.ItemLsitRepository;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class  ItemListViewModel extends ViewModel implements ItemLsitRepository.onFireStoreTaskComplete {
     private static MutableLiveData<List<ItemListModel>> ItemListLiveData=new MutableLiveData<>();
@@ -39,6 +42,21 @@ public class  ItemListViewModel extends ViewModel implements ItemLsitRepository.
             }
         }
         return null;
+    }
+    public MutableLiveData<List<ItemListModel>> getItemListDataByCategory(String Category){
+        MutableLiveData<List<ItemListModel>> filteredData = new MutableLiveData<>();
+
+        // Filter the data
+        if (listModels != null) {
+             @SuppressLint({"NewApi", "LocalSuppress"}) List<ItemListModel> filtered = listModels.stream().filter(item -> Category.toLowerCase().equals(item.getCategory().toLowerCase()))
+                    .collect(Collectors.toList());
+            filteredData.setValue(filtered);
+        }
+        Log.d("LiveDataCategory",filteredData.toString());
+
+        return filteredData;
+        
+
     }
 
     @Override

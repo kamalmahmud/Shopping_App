@@ -1,53 +1,49 @@
 package com.example.shopping_app.Fragment;
 
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shopping_app.Activities.ProductActivity;
 import com.example.shopping_app.Adapter.homeScreenItemsAdapter;
 import com.example.shopping_app.FavoriteImplementation;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
-import com.example.shopping_app.Activities.ProductActivity;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
-import com.example.shopping_app.db.AppDatabase;
-import com.example.shopping_app.db.dao.FavoriteDao;
-import com.example.shopping_app.db.entities.FavoriteEntity;
 
 import java.util.List;
 
-public class homescreenlist extends Fragment implements RecycleViewOnClick {
+public class SearchScreenList extends Fragment implements RecycleViewOnClick {
     private int mColumnCount = 2;
+    private static final String ARG_SEARCH_QUERY = "search_query";
+    private String searchQuery;
     private static final String ARG_COLUMN_COUNT = "column-count";
     private RecyclerView recyclerView;
     private homeScreenItemsAdapter adapter;
     private ItemListViewModel itemListViewModel;
 
-    public homescreenlist() {
+    public SearchScreenList() {
         // Required empty public constructor
     }
 
-    public static homescreenlist newInstance(int columnCount) {
-        homescreenlist fragment = new homescreenlist();
+    public static SearchScreenList newInstance(String Category) {
+        SearchScreenList fragment = new SearchScreenList();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putString(ARG_SEARCH_QUERY, Category);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +52,7 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            searchQuery = getArguments().getString(ARG_SEARCH_QUERY);
         }
     }
 
@@ -80,9 +76,10 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        Log.d("SearchFragment",searchQuery+" in list");
 
         // Observe ItemList data
-        itemListViewModel.getItemListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
+        itemListViewModel.getItemListDataByCategory(searchQuery).observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
             @Override
             public void onChanged(List<ItemListModel> itemListModels) {
                 adapter = new homeScreenItemsAdapter(itemListModels, new RecycleViewOnClick() {

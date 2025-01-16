@@ -15,8 +15,17 @@ import java.net.URLConnection;
 public class ItemListModel {
     private String name,description,image;
     private String DocumentId;
+    private String category;
     private Bitmap img;
     private Float price;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Bitmap getImg() {
         return img;
