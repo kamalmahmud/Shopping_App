@@ -35,21 +35,13 @@ public class CartFragment extends Fragment {
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton backButton = view.findViewById(R.id.btn_back);
+
         MaterialButton checkoutButton = view.findViewById(R.id.btn_checkout);
         TextView removeAllText = view.findViewById(R.id.tv_remove_all);
         EditText couponEditText = view.findViewById(R.id.et_coupon_code);
         ImageButton applyCouponButton = view.findViewById(R.id.btn_apply_coupon);
         RecyclerView cartItemsRecyclerView = view.findViewById(R.id.rv_cart_items);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity() != null) {
-                    getActivity().onBackPressed();
-                }
-            }
-        });
 
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
