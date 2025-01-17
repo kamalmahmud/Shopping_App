@@ -1,5 +1,7 @@
 package com.example.shopping_app.Activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.shopping_app.Adapter.ImageSliderAdapter;
+import com.example.shopping_app.FavoriteImplementation;
 import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
 import com.example.shopping_app.ViewModel.ItemListViewModel;
@@ -27,6 +30,7 @@ public class ProductActivity extends AppCompatActivity {
     ViewPager2 vp;
     TextView title;
     ImageButton BackBtn;
+    Button FavBtn;
     TextView price;
     TextView description;
     Button increaseQuantityBtn;
@@ -37,11 +41,14 @@ public class ProductActivity extends AppCompatActivity {
     Integer Quantity =1;
     TextView QuantityTxt;
     ItemListViewModel itemListViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
+
         BackBtn= (ImageButton) findViewById(R.id.back_button);
+        FavBtn=(Button) findViewById(R.id.heart_button);
         increaseQuantityBtn=(Button)findViewById(R.id.quantity_increase);
         decreaseQuantityBtn=(Button)findViewById(R.id.quantity_decrease);
         QuantityTxt=findViewById(R.id.quantity_text);
@@ -51,6 +58,7 @@ public class ProductActivity extends AppCompatActivity {
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
         description = findViewById(R.id.description);
+
 
 
 
@@ -65,7 +73,7 @@ public class ProductActivity extends AppCompatActivity {
                     onBackPressed();
                 }
             });
-
+        FavoriteImplementation.FavoriteIconHandler(FavBtn,FavBtn,item);
         ArrayList<Bitmap> images = new ArrayList<>(); //Adding the same image of the item five times
         for (int i = 0; i <5 ; i++) {
             images.add(item.getImg());
@@ -95,43 +103,14 @@ public class ProductActivity extends AppCompatActivity {
                 }
             });
 
-            addToCart.setOnClickListener(new View.OnClickListener() {
+        Context context=this;
+                FavBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-
-                    CartEntity cartItem = new CartEntity();
-                    cartItem.setProductId(getIntent().getStringExtra("Item ID"));
-                    cartItem.setName(item.getName());
-                    cartItem.setPrice(item.getPrice());
-                    cartItem.setQuantity(Quantity);
-                    cartItem.setImgUrl(item.getImg());
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                CartDao cartDao = AppDatabase.getInstance(getApplicationContext()).cartDao();
-                                cartDao.insert(cartItem);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        // Show success message to user
-                                        Toast.makeText(ProductActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            } catch (Exception e) {
-                                Log.e("AddToCart", "Error adding item to cart: " + e.getMessage());
-                            }
-                        }
-                    }).start();
-
+                public void onClick(View v) {
+                    FavoriteImplementation.FavorateStateSwitch(FavBtn,context,item);
                 }
             });
 
-
-//        }catch (Exception e ){
-//            Log.e("Quantitiy",e.getMessage());
-//        }
 
 
 

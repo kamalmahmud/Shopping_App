@@ -73,7 +73,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory1"
+                        android:id="@+id/hoodiecatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
@@ -97,7 +97,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory2"
+                        android:id="@+id/jeanscatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
@@ -121,7 +121,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory3"
+                        android:id="@+id/shirtscatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
@@ -145,7 +145,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory4"
+                        android:id="@+id/shoescatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
@@ -155,7 +155,7 @@
                         android:id="@+id/txtcatagory4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shirts"
+                        android:text="Shoes"
                         android:textSize="13dp"
                         android:textStyle="bold" />
 
@@ -169,7 +169,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory5"
+                        android:id="@+id/tshirtcatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
@@ -193,7 +193,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imagecatagory6"
+                        android:id="@+id/bagcatagory"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="@drawable/custom_catagory"
