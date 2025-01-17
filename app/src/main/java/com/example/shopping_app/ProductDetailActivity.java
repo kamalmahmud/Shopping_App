@@ -17,10 +17,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        // Initialize Spinners
-        sizeSpinner = findViewById(R.id.size_spinner);
-        colorSpinner = findViewById(R.id.color_spinner);
-
         // Setup Size Spinner
         setupSizeSpinner();
 

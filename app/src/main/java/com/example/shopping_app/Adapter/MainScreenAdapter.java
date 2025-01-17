@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.shopping_app.Fragment.CartFragment;
 import com.example.shopping_app.Fragment.FavoritesFragment;
 import com.example.shopping_app.Fragment.HomePageFragment;
+import com.example.shopping_app.Fragment.profileFragment;
 import com.example.shopping_app.Interfaces.RecycleViewOnClick;
 import com.example.shopping_app.Model.ItemListModel;
 import com.example.shopping_app.R;
@@ -44,6 +45,9 @@ public class MainScreenAdapter extends AppCompatActivity {
                 } else if (item.getItemId()==R.id.home_screen) {
                     selectedFragment=new HomePageFragment();
 
+                }
+                else if (item.getItemId() == R.id.Profile_tab){
+                    selectedFragment = new profileFragment();
                 }
                 if(selectedFragment!=null) {
 
