@@ -44,7 +44,6 @@ public class homescreenlist extends Fragment implements RecycleViewOnClick {
     MutableLiveData<List<ItemListModel>> LiveData;
 
     public homescreenlist() {
-        // Required empty public constructor
     }
 
     public static homescreenlist newInstance(String category) {

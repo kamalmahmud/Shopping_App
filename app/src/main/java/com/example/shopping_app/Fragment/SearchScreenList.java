@@ -31,13 +31,12 @@ public class SearchScreenList extends Fragment implements RecycleViewOnClick {
     private int mColumnCount = 2;
     private static final String ARG_SEARCH_QUERY = "search_query";
     private String searchQuery;
-    private static final String ARG_COLUMN_COUNT = "column-count";
+
     private RecyclerView recyclerView;
     private homeScreenItemsAdapter adapter;
     private ItemListViewModel itemListViewModel;
 
     public SearchScreenList() {
-        // Required empty public constructor
     }
 
     public static SearchScreenList newInstance(String Category) {
@@ -76,8 +75,6 @@ public class SearchScreenList extends Fragment implements RecycleViewOnClick {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        Log.d("SearchFragment",searchQuery+" in list");
-
         // Observe ItemList data
         itemListViewModel.getItemListDataByCategory(searchQuery).observe(getViewLifecycleOwner(), new Observer<List<ItemListModel>>() {
             @Override
@@ -106,14 +103,11 @@ public class SearchScreenList extends Fragment implements RecycleViewOnClick {
         return view;
     }
 
-    // Implementation of RecycleViewOnClick interface methods
     @Override
     public void onItemClicked(ItemListModel item) {
-        // This is handled in the adapter
     }
 
     @Override
     public void onAddFavoriteClicked(ItemListModel item, Button favoriteBtn) {
-        // This is handled in the adapter
     }
 }

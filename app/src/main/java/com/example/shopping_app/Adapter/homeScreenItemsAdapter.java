@@ -97,7 +97,6 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
                 @Override
                 public void onClick(View v) {
                     try{
-                        Log.d("ItemClicked","");
                     listener.onItemClicked(item);
                     }catch (Exception e){
                         Log.e("clickExc",e.getMessage());
@@ -108,7 +107,6 @@ public class homeScreenItemsAdapter extends RecyclerView.Adapter<homeScreenItems
                 @Override
                 public void onClick(View v) {
                     listener.onAddFavoriteClicked(item,FavoriteBtn);
-                    Log.d("FacoriteClickedB","");
 
                 }
             });

@@ -46,20 +46,19 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-
+        //getting the views
         BackBtn = findViewById(R.id.back_button);
         FavBtn = findViewById(R.id.heart_button);
         increaseQuantityBtn = findViewById(R.id.quantity_increase);
         decreaseQuantityBtn = findViewById(R.id.quantity_decrease);
         QuantityTxt = findViewById(R.id.quantity_text);
         addToCart = findViewById(R.id.add_to_bag);
-
         vp = findViewById(R.id.image_slider);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
         description = findViewById(R.id.description);
 
-
+        //getting the data of the item to be shown
         itemListViewModel = new ItemListViewModel();
         ItemListModel item = itemListViewModel.getItemById(getIntent().getStringExtra("Item ID"));
         title.setText(item.getName());
@@ -72,6 +71,7 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         FavoriteImplementation.FavoriteIconHandler(FavBtn, FavBtn, item);
+
         ArrayList<Bitmap> images = new ArrayList<>(); //Adding the same image of the item five times
         for (int i = 0; i < 5; i++) {
             images.add(item.getImg());
@@ -81,7 +81,6 @@ public class ProductActivity extends AppCompatActivity {
 
 
         //Quantity adding,removing implementation
-//        try {
         decreaseQuantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,11 +121,11 @@ public class ProductActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     // Show success message to user
-                                    Toast.makeText(ProductActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ProductActivity.this, "AddingToCart", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } catch (Exception e) {
-                            Log.e("AddToCart", "Error adding item to cart: " + e.getMessage());
+                            Log.e("AddingToCart", "Error: " + e.getMessage());
                         }
                     }
                 }).start();
@@ -140,6 +139,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FavoriteImplementation.FavorateStateSwitch(FavBtn, context, item);
+
             }
         });
 

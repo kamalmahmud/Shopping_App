@@ -50,45 +50,6 @@ public class ItemListModel {
 
 
 
-    public void downloadimage(){
-//        Bitmap img = null;
-//        try {
-//
-//            Log.println(Log.ASSERT,"DownloadStrated","ex");
-//            URL imageurl= new URL(image);
-//            URLConnection urlconnection = imageurl.openConnection();
-//            urlconnection.connect();
-//            InputStream inputStream= new BufferedInputStream(imageurl.openStream(),8192);
-//            img= BitmapFactory.decodeStream(inputStream);
-//            inputStream.close();
-//
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//
-//        }
-        try {
-            Log.println(Log.WARN,"Hiiii","ggfg");
-            URL strUrl = new URL(image);
-            Log.println(Log.WARN,"Hiiillllli5","ggfg");
-            URLConnection connection = strUrl.openConnection();
-            Log.println(Log.WARN,"Hiiillllli4","ggfg");
-            connection.connect();
-            Log.println(Log.WARN,"Hiiillllli3","ggfg");
-            InputStream inputstream = new BufferedInputStream(strUrl.openStream(), 8192);
-            Log.println(Log.WARN,"Hiiillllli2","ggfg");
-            img=BitmapFactory.decodeStream(inputstream);
-            Log.println(Log.WARN,"Hiiillllli1","ggfg");
-            inputstream.close();
-            Log.println(Log.WARN,"Hiiillllli","ggfg");
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Log.e("ggggggggg",e.getMessage());
-        }
-
-    }
-
     public String getName() {
         return name;
     }

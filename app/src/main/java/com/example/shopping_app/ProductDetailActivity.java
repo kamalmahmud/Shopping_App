@@ -52,7 +52,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if (position > 0) {
                     String selectedSize = parent.getItemAtPosition(position).toString();
                     // Do something with the selected size
-                    // For example: Toast.makeText(ProductDetailActivity.this, "Selected Size: " + selectedSize, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -91,7 +90,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if (position > 0) {
                     String selectedColor = parent.getItemAtPosition(position).toString();
                     // Do something with the selected color
-                    // For example: Toast.makeText(ProductDetailActivity.this, "Selected Color: " + selectedColor, Toast.LENGTH_SHORT).show();
                 }
             }
 

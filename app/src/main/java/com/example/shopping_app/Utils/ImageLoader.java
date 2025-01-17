@@ -56,7 +56,7 @@ public class ImageLoader {
                 }
             } catch (Exception e) {
                 Log.e("ImageLoader", "Error loading image: " + imageUrl, e);
-                mainHandler.post(() -> imageView.setImageResource(R.drawable.ioadingimg));
+                mainHandler.post(() -> imageView.setImageResource(R.drawable.imagenotfound));
             }
         });
     }

@@ -37,7 +37,7 @@ public class ordersActivity extends AppCompatActivity {
 
         recyclerOrders = findViewById(R.id.recyclerOrders);
         layoutEmpty = findViewById(R.id.layoutEmpty);
-        imageButton =(ImageButton) findViewById(R.id.orderBtnBack);
+        imageButton =(ImageButton) findViewById(R.id.orderBtnBack); //backButton
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +49,7 @@ public class ordersActivity extends AppCompatActivity {
         adapter = new OrderAdapter();
         recyclerOrders.setAdapter(adapter);
         recyclerOrders.setLayoutManager(new LinearLayoutManager(this));
-
+        //Background thread to get the orders and decide which layout should be shown
         new Thread(new Runnable() {
             @Override
             public void run() {
