@@ -55,5 +55,6 @@ dependencies {
     implementation ("androidx.room:room-runtime:2.6.1")
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
     implementation ("com.squareup.picasso:picasso:2.71828")
+    testImplementation ("junit:junit:4.13.2")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
 }
