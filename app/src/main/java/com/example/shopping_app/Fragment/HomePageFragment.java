@@ -41,10 +41,6 @@ public class HomePageFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
     }
 
     @Override
@@ -53,15 +49,12 @@ public class HomePageFragment extends Fragment  {
 
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
 
-        // Find the SearchBar from inflated view
+        // Initialize searchbar
         SearchBar = view.findViewById(R.id.search_bar);
-
-
-
         setupSearchListener();
         CategoryListeners(view);
 
-        // ListFragment setup
+        // place list fragment
         FragmentManager fragmentManager = getChildFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.homeScreenlistframe, new homescreenlist())
@@ -72,13 +65,10 @@ public class HomePageFragment extends Fragment  {
     }
 
     private void setupSearchListener() {
-
-
         SearchBar.setOnKeyListener((v, keyCode, event) -> {
             Log.d("SearchDebug", "Key pressed: " + keyCode);
             if (event.getAction() == KeyEvent.ACTION_DOWN &&
                     keyCode == KeyEvent.KEYCODE_ENTER) {
-                Log.d("SearchDebug", "Enter key detected");
                 performSearch();
                 return true;
             }
@@ -88,7 +78,6 @@ public class HomePageFragment extends Fragment  {
 
     private void performSearch() {
         String searchQuery = SearchBar.getText().toString().trim();
-        Log.d("SearchDebug", "Search query: " + searchQuery);
 
         if (!searchQuery.isEmpty()) {
             try {
@@ -100,7 +89,6 @@ public class HomePageFragment extends Fragment  {
                         .addToBackStack(null)
                         .commit();
 
-                Log.d("SearchDebug", "Fragment transaction completed");
             } catch (Exception e) {
                 Log.e("SearchDebug", "Error during search: ", e);
             }

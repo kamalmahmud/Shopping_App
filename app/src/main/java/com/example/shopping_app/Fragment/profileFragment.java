@@ -21,15 +21,14 @@ import androidx.annotation.Nullable;
 public class profileFragment extends Fragment {
 
     private Button btnMyOrders;
-
+    //Empty Fragment Required
     public profileFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -37,7 +36,7 @@ public class profileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the button
+        // Initialize button
         btnMyOrders = view.findViewById(R.id.btnMyOrders);
 
         // Set click listener for My Orders button
