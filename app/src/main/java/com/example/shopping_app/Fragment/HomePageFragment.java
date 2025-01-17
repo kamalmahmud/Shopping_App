@@ -50,65 +50,14 @@ public class HomePageFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //ListFragment
-//        FragmentManager fragmentManager=getChildFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.homeScreenlistframe, homescreenlist.class,null).addToBackStack(null).commit();
-//        View view = inflater.inflate(R.layout.fragment_home_screen,container,false);
-//        SearchBar=view.findViewById(R.id.search_bar);
-//        SearchBar.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                Log.d("OnSearch","hh");
-//
-//                if (event.getAction()==KeyEvent.ACTION_DOWN&&keyCode==KeyEvent.KEYCODE_ENTER){
-//                    Log.d("OnSearch","hh");
-//
-//                    SearchScreenFragment SFragment= SearchScreenFragment().newInstance(SearchBar.getText().toString());
-//                    FragmentManager fragmentManager1=getParentFragmentManager();
-//                    fragmentManager1.beginTransaction().replace(R.id.framelayout,SFragment).addToBackStack(null).commit();
-//                    Log.d("OnSearch","hh");
-//                    return true;
-//
-//                }
-//                return false;
-//            }
-//        });
-
-
-
-
-
-//        SearchBar.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                Log.d("OnSearch", "Key pressed");
-//
-//                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-//                    String searchQuery = SearchBar.getText().toString().trim();
-//                    if (!searchQuery.isEmpty()) {
-//                        Log.d("OnSearch", "Enter pressed with query: " + searchQuery);
-//                        SearchScreenFragment sFragment = SearchScreenFragment.newInstance(searchQuery);
-//                        FragmentManager fragmentManager1 = getParentFragmentManager();
-//                        fragmentManager1.beginTransaction()
-//                                .replace(R.id.framelayout, sFragment)
-//                                .addToBackStack(null)
-//                                .commit();
-//                        return true;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
 
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
 
         // Find the SearchBar from inflated view
         SearchBar = view.findViewById(R.id.search_bar);
 
-        // Add log to check if SearchBar is found
-        Log.d("SearchDebug", "SearchBar found: " + (SearchBar != null));
 
-        // Setup listener with both approaches for testing
+
         setupSearchListener();
         CategoryListeners(view);
 
@@ -123,21 +72,8 @@ public class HomePageFragment extends Fragment  {
     }
 
     private void setupSearchListener() {
-        // Try both listeners to see which one works
 
-        // Approach 1: EditorActionListener
-        SearchBar.setOnEditorActionListener((v, actionId, event) -> {
-            Log.d("SearchDebug", "EditorAction triggered");
-            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                Log.d("SearchDebug", "Enter key detected");
-                performSearch();
-                return true;
-            }
-            return false;
-        });
 
-        // Approach 2: KeyListener
         SearchBar.setOnKeyListener((v, keyCode, event) -> {
             Log.d("SearchDebug", "Key pressed: " + keyCode);
             if (event.getAction() == KeyEvent.ACTION_DOWN &&
